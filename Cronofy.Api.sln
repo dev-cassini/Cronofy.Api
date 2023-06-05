@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cronofy.Api", "src\Cronofy.Api\Cronofy.Api.csproj", "{B886A90E-32BA-46E3-A9DC-0622A538BDDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2D86F18A-4694-4F7E-9701-0E590DAFCB2F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{EC110462-FF3E-4AD2-8B2B-356A0DCCF111}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{8C365FFB-9248-4B51-9EF9-8BBA31093F02}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B886A90E-32BA-46E3-A9DC-0622A538BDDD} = {2D86F18A-4694-4F7E-9701-0E590DAFCB2F}
+	EndGlobalSection
+EndGlobal
