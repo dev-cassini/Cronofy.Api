@@ -9,7 +9,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionFolder", "{8C365FFB-9248-4B51-9EF9-8BBA31093F02}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		Cronofy.Api.sln.DotSettings = Cronofy.Api.sln.DotSettings
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cronofy.Domain", "src\Cronofy.Domain\Cronofy.Domain.csproj", "{B3D98E55-EE4D-4017-A080-0E64FCE6EE86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +24,13 @@ Global
 		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B886A90E-32BA-46E3-A9DC-0622A538BDDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D98E55-EE4D-4017-A080-0E64FCE6EE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D98E55-EE4D-4017-A080-0E64FCE6EE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D98E55-EE4D-4017-A080-0E64FCE6EE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D98E55-EE4D-4017-A080-0E64FCE6EE86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B886A90E-32BA-46E3-A9DC-0622A538BDDD} = {2D86F18A-4694-4F7E-9701-0E590DAFCB2F}
+		{B3D98E55-EE4D-4017-A080-0E64FCE6EE86} = {2D86F18A-4694-4F7E-9701-0E590DAFCB2F}
 	EndGlobalSection
 EndGlobal
