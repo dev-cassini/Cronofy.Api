@@ -2,10 +2,10 @@ namespace Cronofy.Domain;
 
 public class ServiceAccount
 {
-    public string Id { get; }
-    public string Domain { get; }
-    public string AccessToken { get; }
-    public string RefreshToken { get; }
+    public string Id { get; } = null!;
+    public string Domain { get; } = null!;
+    public string AccessToken { get; } = null!;
+    public string RefreshToken { get; } = null!;
 
 
     public ServiceAccount(
@@ -19,4 +19,9 @@ public class ServiceAccount
         AccessToken = accessToken;
         RefreshToken = refreshToken;
     }
+    
+    #region EF Constructor
+    // ReSharper disable once UnusedMember.Local
+    private ServiceAccount() { }
+    #endregion
 }
