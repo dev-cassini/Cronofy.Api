@@ -8,6 +8,8 @@ public class ServiceAccountConfiguration : IEntityTypeConfiguration<ServiceAccou
 {
     public void Configure(EntityTypeBuilder<ServiceAccount> builder)
     {
+        builder.ToTable(nameof(CronofyWriteDbContext.ServiceAccounts));
+        
         builder.HasKey(x => x.Id);
         builder.Property(x => x.AccessToken);
         builder.Property(x => x.RefreshToken);
