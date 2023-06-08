@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionFolder", "SolutionF
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		Cronofy.Api.sln.DotSettings = Cronofy.Api.sln.DotSettings
+		README.md = README.md
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cronofy.Domain", "src\Cronofy.Domain\Cronofy.Domain.csproj", "{B3D98E55-EE4D-4017-A080-0E64FCE6EE86}"
