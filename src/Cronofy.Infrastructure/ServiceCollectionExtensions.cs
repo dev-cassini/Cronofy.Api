@@ -1,4 +1,5 @@
 using Cronofy.Infrastructure.Persistence;
+using Cronofy.Infrastructure.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,5 +12,6 @@ public static class ServiceCollectionExtensions
         IConfiguration configuration)
     {
         serviceCollection.AddPersistence(configuration);
+        serviceCollection.AddQueries();
     }
 }
