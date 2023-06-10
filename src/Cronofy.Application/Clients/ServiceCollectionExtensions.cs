@@ -22,5 +22,7 @@ internal static class ServiceCollectionExtensions
                 application.ClientSecret,
                 application.DataCenter.ToSdkIdentifier());
         });
+
+        serviceCollection.AddScoped<IEnterpriseConnectAccountClientFactory, EnterpriseConnectAccountClientFactory>();
     }
 }
