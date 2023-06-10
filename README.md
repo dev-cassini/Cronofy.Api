@@ -22,3 +22,17 @@ dotnet ef migrations remove
     --project .\src\Cronofy.Infrastructure\  
     --context CronofyWriteDbContext
 ```
+
+### User Secrets ###
+https://learn.microsoft.com/en-us/aspnet/core/security/app-secrets?view=aspnetcore-7.0&tabs=windows
+
+Enable secret storage:
+
+`dotnet user-secrets init`
+
+Add Cronofy application client id and secret to secret storage:
+
+```
+dotnet user-secrets set "CronofyApplication:ClientId" "CRONOFY_APPLICATION_CLIENT_ID"
+dotnet user-secrets set "CronofyApplication:ClientSecret" "CRONOFY_APPLICATION_CLIENT_SECRET"
+```
