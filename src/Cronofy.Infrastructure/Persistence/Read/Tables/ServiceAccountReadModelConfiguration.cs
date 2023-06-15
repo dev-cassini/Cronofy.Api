@@ -1,5 +1,5 @@
-using Cronofy.Domain;
 using Cronofy.Infrastructure.Persistence.Read.Models;
+using Cronofy.Infrastructure.Persistence.Write;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,7 +9,7 @@ public class ServiceAccountReadModelConfiguration : IEntityTypeConfiguration<Ser
 {
     public void Configure(EntityTypeBuilder<ServiceAccountReadModel> builder)
     {
-        builder.ToTable(nameof(ServiceAccount));
+        builder.ToTable(nameof(CronofyWriteDbContext.ServiceAccounts));
         builder.HasKey(x => x.Id);
     }
 }
