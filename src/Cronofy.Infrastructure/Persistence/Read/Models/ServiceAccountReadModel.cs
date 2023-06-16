@@ -4,4 +4,4 @@ public record ServiceAccountReadModel(
     string Id,
     string Domain,
     string AccessToken,
-    string RefreshToken);
+    string ProtectedRefreshToken);

@@ -13,6 +13,6 @@ public class ServiceAccountConfiguration : IEntityTypeConfiguration<ServiceAccou
         builder.HasKey(x => x.Id);
         builder.Property(x => x.Domain);
         builder.Property(x => x.AccessToken);
-        builder.Property(x => x.RefreshToken);
+        builder.Property(x => x.ProtectedRefreshToken);
     }
 }

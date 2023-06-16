@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.DataProtection;
+
 namespace Cronofy.Domain;
 
 public class ServiceAccount
@@ -5,19 +7,22 @@ public class ServiceAccount
     public string Id { get; } = null!;
     public string Domain { get; } = null!;
     public string AccessToken { get; } = null!;
-    public string RefreshToken { get; } = null!;
+    public string ProtectedRefreshToken { get; } = null!;
 
 
     public ServiceAccount(
         string id,
         string domain,
         string accessToken, 
-        string refreshToken)
+        string refreshToken,
+        IDataProtectionProvider dataProtectionProvider)
     {
         Id = id;
         Domain = domain;
         AccessToken = accessToken;
-        RefreshToken = refreshToken;
+        
+        var protector = dataProtectionProvider.CreateProtector(nameof(ProtectedRefreshToken));
+        ProtectedRefreshToken = protector.Protect(refreshToken);
     }
     
     #region EF Constructor
