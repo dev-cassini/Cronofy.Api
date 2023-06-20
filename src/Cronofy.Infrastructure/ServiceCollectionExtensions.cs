@@ -1,4 +1,6 @@
+using Cronofy.Infrastructure.Messaging.MassTransit;
 using Cronofy.Infrastructure.Persistence;
+using Cronofy.Infrastructure.Persistence.Write;
 using Cronofy.Infrastructure.Queries;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,5 +15,6 @@ public static class ServiceCollectionExtensions
     {
         serviceCollection.AddPersistence(configuration);
         serviceCollection.AddQueries();
+        serviceCollection.AddMassTransit<CronofyWriteDbContext>();
     }
 }

@@ -1,4 +1,5 @@
 using Cronofy.Domain;
+using Cronofy.Infrastructure.Messaging.MassTransit;
 using Cronofy.Infrastructure.Persistence.Write.Tables;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,5 +16,7 @@ public class CronofyWriteDbContext : DbContext
     {
         modelBuilder.ApplyConfiguration(new ServiceAccountConfiguration());
         modelBuilder.ApplyConfiguration(new AuthorizedAccountConfiguration());
+        
+        modelBuilder.ConfigureMassTransitEntityFrameworkOutbox();
     }
 }
