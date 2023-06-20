@@ -1,23 +1,23 @@
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cronofy.Infrastructure.Messaging.MassTransit;
 
 internal static class ServiceCollectionExtensions
 {
-    internal static void AddMassTransit<TDbContext>(this IServiceCollection serviceCollection)
+    internal static void AddMassTransit<TDbContext>(
+        this IServiceCollection serviceCollection,
+        IConfiguration configuration)
         where TDbContext : DbContext
     {
         serviceCollection.AddMassTransit(configurator =>
         {
             configurator.UsingRabbitMq((context, factoryConfigurator) =>
             {
-                factoryConfigurator.Host("localhost", "/", hostConfigurator =>
-                {
-                    hostConfigurator.Username("guest");
-                    hostConfigurator.Password("guest");
-                });
+                var rabbitMqConnectionString = configuration.GetConnectionString("RabbitMq")!;
+                factoryConfigurator.Host(rabbitMqConnectionString);
                 factoryConfigurator.ConfigureEndpoints(context);
             });
             

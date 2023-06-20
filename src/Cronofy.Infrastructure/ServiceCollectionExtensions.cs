@@ -15,6 +15,6 @@ public static class ServiceCollectionExtensions
     {
         serviceCollection.AddPersistence(configuration);
         serviceCollection.AddQueries();
-        serviceCollection.AddMassTransit<CronofyWriteDbContext>();
+        serviceCollection.AddMassTransit<CronofyWriteDbContext>(configuration);
     }
 }

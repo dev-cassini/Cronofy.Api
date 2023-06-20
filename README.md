@@ -44,3 +44,9 @@ Add Postgres connection string to secret storage:
 ```
 dotnet user-secrets set "ConnectionStrings:Postgres" "POSTGRES_CONNECTION_STRING"
 ```
+
+Add RabbitMQ connection string to secret storage:
+
+```
+dotnet user-secrets set "ConnectionStrings:RabbitMq" "RABBITMQ_CONNECTION_STRING"
+```
