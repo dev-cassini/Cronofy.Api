@@ -1,4 +1,5 @@
 using Cronofy.Infrastructure.Messaging.MassTransit;
+using Cronofy.Infrastructure.Messaging.MediatR;
 using Cronofy.Infrastructure.Persistence;
 using Cronofy.Infrastructure.Persistence.Write;
 using Cronofy.Infrastructure.Queries;
@@ -15,6 +16,7 @@ public static class ServiceCollectionExtensions
     {
         serviceCollection.AddPersistence(configuration);
         serviceCollection.AddQueries();
+        serviceCollection.AddMediatR();
         serviceCollection.AddMassTransit<CronofyWriteDbContext>(configuration);
     }
 }
