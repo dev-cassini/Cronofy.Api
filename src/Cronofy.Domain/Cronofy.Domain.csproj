@@ -9,15 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="Microsoft.AspNetCore.DataProtection">
-        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\7.0.5\Microsoft.AspNetCore.DataProtection.dll</HintPath>
-      </Reference>
-      <Reference Include="Microsoft.AspNetCore.DataProtection.Abstractions">
-        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\7.0.5\Microsoft.AspNetCore.DataProtection.Abstractions.dll</HintPath>
-      </Reference>
-      <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
-        <HintPath>C:\Program Files\dotnet\shared\Microsoft.AspNetCore.App\7.0.5\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
-      </Reference>
+      <PackageReference Include="Microsoft.AspNetCore.DataProtection" Version="7.0.8" />
     </ItemGroup>
 
 </Project>
