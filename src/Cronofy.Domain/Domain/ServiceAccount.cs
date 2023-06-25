@@ -1,3 +1,5 @@
+using Cronofy.Domain.Common;
+using Cronofy.Domain.Events;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace Cronofy.Domain;
@@ -23,6 +25,8 @@ public class ServiceAccount : Entity
         
         var protector = dataProtectionProvider.CreateProtector(nameof(ProtectedRefreshToken));
         ProtectedRefreshToken = protector.Protect(refreshToken);
+        
+        AddDomainEvent(new ServiceAccountCreated(Id));
     }
     
     #region EF Constructor
