@@ -14,5 +14,6 @@ public class ServiceAccountConfiguration : IEntityTypeConfiguration<ServiceAccou
         builder.Property(x => x.Domain);
         builder.Property(x => x.AccessToken);
         builder.Property(x => x.ProtectedRefreshToken);
+        builder.Ignore(x => x.DomainEvents);
     }
 }

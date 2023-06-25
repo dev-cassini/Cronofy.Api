@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.DataProtection;
 
 namespace Cronofy.Domain;
 
-public class ServiceAccount
+public class ServiceAccount : Entity
 {
     public string Id { get; } = null!;
     public string Domain { get; } = null!;
