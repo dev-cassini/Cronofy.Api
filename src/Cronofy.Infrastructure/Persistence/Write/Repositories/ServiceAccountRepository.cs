@@ -12,8 +12,13 @@ public class ServiceAccountRepository : IServiceAccountRepository
         _dbContext = dbContext;
     }
 
-    public async Task AddAsync(ServiceAccount serviceAccount)
+    public async Task AddAsync(ServiceAccount serviceAccount, CancellationToken cancellationToken = default)
     {
-        await _dbContext.ServiceAccounts.AddAsync(serviceAccount);
+        await _dbContext.ServiceAccounts.AddAsync(serviceAccount, cancellationToken);
+    }
+
+    public async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 }
