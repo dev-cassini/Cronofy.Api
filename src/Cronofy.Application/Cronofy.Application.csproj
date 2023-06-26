@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <PackageReference Include="Cronofy" Version="1.10.0" />
+      <PackageReference Include="MediatR" Version="12.0.1" />
     </ItemGroup>
 
 </Project>
