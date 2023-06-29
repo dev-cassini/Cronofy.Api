@@ -1,3 +1,4 @@
+using Cronofy.Application;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cronofy.Infrastructure.Messaging.MediatR;
@@ -8,7 +9,7 @@ internal static class ServiceCollectionExtensions
     {
         serviceCollection.AddMediatR(configuration =>
         {
-            configuration.RegisterServicesFromAssemblyContaining<InfrastructureMarker>();
+            configuration.RegisterServicesFromAssemblyContaining<ApplicationMarker>();
         });
     }
 }
