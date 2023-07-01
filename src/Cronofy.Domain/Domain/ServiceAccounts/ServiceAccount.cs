@@ -20,7 +20,7 @@ public class ServiceAccount : Entity
         IDataProtectionProvider dataProtectionProvider)
     {
         Id = id;
-        Domain = domain;
+        Domain = domain.Trim().ToLower();
         AccessToken = accessToken;
         
         var protector = dataProtectionProvider.CreateProtector(nameof(ProtectedRefreshToken));
