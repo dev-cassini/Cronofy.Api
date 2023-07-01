@@ -1,5 +1,7 @@
 using Cronofy.Domain.Common;
 using Cronofy.Domain.Events;
+using Cronofy.Domain.Repositories;
+using Cronofy.Domain.Validators;
 using Microsoft.AspNetCore.DataProtection;
 
 namespace Cronofy.Domain;
@@ -17,11 +19,14 @@ public class ServiceAccount : Entity
         string domain,
         string accessToken, 
         string refreshToken,
-        IDataProtectionProvider dataProtectionProvider)
+        IDataProtectionProvider dataProtectionProvider,
+        IServiceAccountRepository serviceAccountRepository)
     {
         Id = id;
         Domain = domain.Trim().ToLower();
         AccessToken = accessToken;
+
+        new CreateValidator(serviceAccountRepository).Validate(this);
         
         var protector = dataProtectionProvider.CreateProtector(nameof(ProtectedRefreshToken));
         ProtectedRefreshToken = protector.Protect(refreshToken);

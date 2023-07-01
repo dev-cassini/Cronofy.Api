@@ -2,6 +2,9 @@ namespace Cronofy.Domain.Common.Validation;
 
 public abstract class EntityValidator<T> where T : Entity
 {
+    /// <summary>
+    /// Rules to be applied when the validator is executed.
+    /// </summary>
     protected abstract IEnumerable<IRule<T>> Rules { get; }
 
     /// <summary>
@@ -28,5 +31,11 @@ public abstract class EntityValidator<T> where T : Entity
         {
             throw aggregateException;
         }
+    }
+    
+    /// <inheritdoc cref="ValidateAsync"/>
+    public void Validate(T entity)
+    {
+        ValidateAsync(entity).ConfigureAwait(false);
     }
 }
