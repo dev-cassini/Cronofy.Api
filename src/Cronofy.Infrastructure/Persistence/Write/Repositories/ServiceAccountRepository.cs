@@ -26,7 +26,7 @@ public class ServiceAccountRepository : IServiceAccountRepository
     public async Task<bool> AnyAsync(string domain, CancellationToken cancellationToken = default)
     {
         var serviceAccount = await _dbContext.ServiceAccounts
-            .SingleOrDefaultAsync(x => x.Domain.Trim().ToLower() == x.Domain, cancellationToken);
+            .SingleOrDefaultAsync(x => x.Domain == domain.Trim().ToLower(), cancellationToken);
         
         return serviceAccount is not null;
     }
