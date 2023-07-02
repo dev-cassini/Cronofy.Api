@@ -36,7 +36,8 @@ public class ServiceAccount : Entity
         string accessToken, 
         string refreshToken,
         IDataProtectionProvider dataProtectionProvider,
-        IServiceAccountRepository serviceAccountRepository)
+        IServiceAccountRepository serviceAccountRepository,
+        CancellationToken cancellationToken)
     {
         var serviceAccount = new ServiceAccount(
             id,
@@ -45,7 +46,7 @@ public class ServiceAccount : Entity
             refreshToken,
             dataProtectionProvider);
 
-        await new CreateValidator(serviceAccountRepository).ValidateAsync(serviceAccount);
+        await new CreateValidator(serviceAccountRepository).ValidateAsync(serviceAccount, cancellationToken);
         return serviceAccount;
     }
 

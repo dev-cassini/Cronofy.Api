@@ -10,6 +10,7 @@ public interface IRule<in T> where T : Entity
     /// The rule check. Throws <see cref="BrokenRuleException"/> on failure.
     /// </summary>
     /// <param name="entity">Entity to which the rule applies.</param>
+    /// <param name="cancellationToken">Cancellation token.</param>
     /// <exception cref="BrokenRuleException">Check failed.</exception>
-    Task CheckAsync(T entity);
+    Task CheckAsync(T entity, CancellationToken cancellationToken);
 }

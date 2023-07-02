@@ -26,7 +26,8 @@ public class CreateServiceAccountCommandHandler : IRequestHandler<CreateServiceA
             request.AccessToken, 
             request.RefreshToken,
             _dataProtectionProvider,
-            _serviceAccountRepository);
+            _serviceAccountRepository,
+            cancellationToken);
 
         await _serviceAccountRepository.AddAsync(serviceAccount, cancellationToken);
         await _serviceAccountRepository.SaveChangesAsync(cancellationToken);
