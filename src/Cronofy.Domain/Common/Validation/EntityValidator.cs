@@ -32,10 +32,4 @@ public abstract class EntityValidator<T> where T : Entity
             throw aggregateException;
         }
     }
-    
-    /// <inheritdoc cref="ValidateAsync"/>
-    public void Validate(T entity)
-    {
-        ValidateAsync(entity).ConfigureAwait(false);
-    }
 }

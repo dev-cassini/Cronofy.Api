@@ -20,7 +20,7 @@ public class CreateServiceAccountCommandHandler : IRequestHandler<CreateServiceA
     
     public async Task Handle(CreateServiceAccountCommand request, CancellationToken cancellationToken)
     {
-        var serviceAccount = new ServiceAccount(
+        var serviceAccount = await ServiceAccount.CreateAsync(
             request.Id, 
             request.Domain, 
             request.AccessToken, 

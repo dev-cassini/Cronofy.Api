@@ -12,9 +12,25 @@ public class ServiceAccount : Entity
     public string Domain { get; } = null!;
     public string AccessToken { get; } = null!;
     public string ProtectedRefreshToken { get; } = null!;
+    
+    private ServiceAccount(
+        string id,
+        string domain,
+        string accessToken, 
+        string refreshToken,
+        IDataProtectionProvider dataProtectionProvider)
+    {
+        Id = id;
+        Domain = domain.Trim().ToLower();
+        AccessToken = accessToken;
 
+        var protector = dataProtectionProvider.CreateProtector(nameof(ProtectedRefreshToken));
+        ProtectedRefreshToken = protector.Protect(refreshToken);
+        
+        AddDomainEvent(new ServiceAccountCreated(Id));
+    }
 
-    public ServiceAccount(
+    public static async Task<ServiceAccount> CreateAsync(
         string id,
         string domain,
         string accessToken, 
@@ -22,18 +38,17 @@ public class ServiceAccount : Entity
         IDataProtectionProvider dataProtectionProvider,
         IServiceAccountRepository serviceAccountRepository)
     {
-        Id = id;
-        Domain = domain.Trim().ToLower();
-        AccessToken = accessToken;
+        var serviceAccount = new ServiceAccount(
+            id,
+            domain,
+            accessToken,
+            refreshToken,
+            dataProtectionProvider);
 
-        new CreateValidator(serviceAccountRepository).Validate(this);
-        
-        var protector = dataProtectionProvider.CreateProtector(nameof(ProtectedRefreshToken));
-        ProtectedRefreshToken = protector.Protect(refreshToken);
-        
-        AddDomainEvent(new ServiceAccountCreated(Id));
+        await new CreateValidator(serviceAccountRepository).ValidateAsync(serviceAccount);
+        return serviceAccount;
     }
-    
+
     #region EF Constructor
     // ReSharper disable once UnusedMember.Local
     private ServiceAccount() { }
