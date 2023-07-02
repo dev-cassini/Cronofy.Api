@@ -24,5 +24,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.RegisterEndpoints();
+app.UseCustomExceptionHandler();
 
 app.Run();
