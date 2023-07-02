@@ -21,7 +21,7 @@ public class DomainIsUnique : IRule<ServiceAccount>
     public async Task CheckAsync(ServiceAccount serviceAccount)
     {
         var serviceAccountExists = await _serviceAccountRepository.AnyAsync(serviceAccount.Domain);
-        if (!serviceAccountExists)
+        if (serviceAccountExists)
         {
             throw new DomainIsNotUnique();
         }
