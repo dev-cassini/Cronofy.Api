@@ -1,4 +1,4 @@
-using Cronofy.Domain;
+using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
 using Cronofy.Infrastructure.Messaging.MassTransit;
 using Cronofy.Infrastructure.Messaging.MediatR;
 using Cronofy.Infrastructure.Persistence.Write.Tables;

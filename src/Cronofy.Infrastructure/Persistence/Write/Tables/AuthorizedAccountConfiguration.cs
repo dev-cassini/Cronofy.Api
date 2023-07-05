@@ -1,4 +1,4 @@
-using Cronofy.Domain;
+using Cronofy.Domain.HeartOfTheMatter;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

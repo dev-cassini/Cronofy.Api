@@ -1,4 +1,6 @@
-namespace Cronofy.Domain;
+using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
+
+namespace Cronofy.Domain.HeartOfTheMatter;
 
 public class AuthorizedAccount
 {

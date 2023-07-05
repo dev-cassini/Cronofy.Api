@@ -1,4 +1,4 @@
-using Cronofy.Domain;
+using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
 using Cronofy.Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.DataProtection;

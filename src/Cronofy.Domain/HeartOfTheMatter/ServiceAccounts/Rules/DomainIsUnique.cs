@@ -1,7 +1,7 @@
 using Cronofy.Domain.Common.Validation;
 using Cronofy.Domain.Repositories;
 
-namespace Cronofy.Domain.Rules;
+namespace Cronofy.Domain.HeartOfTheMatter.ServiceAccounts.Rules;
 
 public class DomainIsUnique : IRule<ServiceAccount>
 {

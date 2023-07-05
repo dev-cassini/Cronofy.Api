@@ -1,3 +1,5 @@
+using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
+
 namespace Cronofy.Domain.Repositories;
 
 public interface IServiceAccountRepository
