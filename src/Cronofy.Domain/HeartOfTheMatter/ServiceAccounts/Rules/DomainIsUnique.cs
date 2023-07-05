@@ -24,17 +24,17 @@ public class DomainIsUnique : IRule<ServiceAccount>
         var serviceAccountExists = await _serviceAccountRepository.AnyAsync(serviceAccount.Domain, cancellationToken);
         if (serviceAccountExists)
         {
-            throw new DomainIsNotUnique();
+            throw new DomainIsNotUniqueException();
         }
     }
 }
 
-public class DomainIsNotUnique : BrokenRuleException
+public class DomainIsNotUniqueException : BrokenRuleException
 {
     public const string Key = "DomainIsNotUnique";
     public override BrokenRuleSummary BrokenRuleSummary { get; }
 
-    public DomainIsNotUnique()
+    public DomainIsNotUniqueException()
     {
         BrokenRuleSummary = new BrokenRuleSummary(
             Key,
