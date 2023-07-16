@@ -1,4 +1,5 @@
 using Cronofy.Application;
+using Cronofy.Infrastructure.Messaging.MediatR.PipelineBehaviours;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cronofy.Infrastructure.Messaging.MediatR;
@@ -10,6 +11,7 @@ internal static class ServiceCollectionExtensions
         serviceCollection.AddMediatR(configuration =>
         {
             configuration.RegisterServicesFromAssemblyContaining<ApplicationMarker>();
+            configuration.AddOpenBehavior(typeof(TransactionPipelineBehaviour<,>));
         });
     }
 }

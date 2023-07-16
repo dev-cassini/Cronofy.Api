@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Cronofy.Application.Commands.ServiceAccounts;
 
-public class CreateServiceAccountCommand : IRequest
+public class CreateServiceAccountCommand : IRequest<Unit>
 {
     /// <inheritdoc cref="ServiceAccount.Id"/>
     public string Id { get; }

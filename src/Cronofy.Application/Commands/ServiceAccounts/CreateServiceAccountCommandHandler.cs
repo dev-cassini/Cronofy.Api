@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.DataProtection;
 
 namespace Cronofy.Application.Commands.ServiceAccounts;
 
-public class CreateServiceAccountCommandHandler : IRequestHandler<CreateServiceAccountCommand>
+public class CreateServiceAccountCommandHandler : IRequestHandler<CreateServiceAccountCommand, Unit>
 {
     private readonly IServiceAccountRepository _serviceAccountRepository;
     private readonly IDataProtectionProvider _dataProtectionProvider;
@@ -18,7 +18,7 @@ public class CreateServiceAccountCommandHandler : IRequestHandler<CreateServiceA
         _dataProtectionProvider = dataProtectionProvider;
     }
     
-    public async Task Handle(CreateServiceAccountCommand request, CancellationToken cancellationToken)
+    public async Task<Unit> Handle(CreateServiceAccountCommand request, CancellationToken cancellationToken)
     {
         var serviceAccount = await ServiceAccount.CreateAsync(
             request.Id, 
@@ -31,5 +31,7 @@ public class CreateServiceAccountCommandHandler : IRequestHandler<CreateServiceA
 
         await _serviceAccountRepository.AddAsync(serviceAccount, cancellationToken);
         await _serviceAccountRepository.SaveChangesAsync(cancellationToken);
+
+        return new Unit();
     }
 }
