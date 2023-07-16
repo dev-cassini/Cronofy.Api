@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Cronofy.Application.Clients;
 
-using Application = Domain.HeartOfTheMatter.Application;
+using Application = Domain.Entities.Application;
 
 internal static class ServiceCollectionExtensions
 {

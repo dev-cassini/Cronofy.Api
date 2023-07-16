@@ -1,8 +1,8 @@
 using Cronofy.Domain.Common.Validation;
-using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts.Rules;
+using Cronofy.Domain.Entities.ServiceAccounts.Rules;
 using Cronofy.Domain.Repositories;
 
-namespace Cronofy.Domain.HeartOfTheMatter.ServiceAccounts.Validators;
+namespace Cronofy.Domain.Entities.ServiceAccounts.Validators;
 
 /// <summary>
 /// Validator to be applied on creation of a <see cref="ServiceAccount"/>.

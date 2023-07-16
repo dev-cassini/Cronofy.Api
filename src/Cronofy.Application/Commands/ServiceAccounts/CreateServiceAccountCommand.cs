@@ -1,4 +1,4 @@
-using Cronofy.Domain;
+using Cronofy.Domain.Entities.ServiceAccounts;
 using MediatR;
 
 namespace Cronofy.Application.Commands.ServiceAccounts;

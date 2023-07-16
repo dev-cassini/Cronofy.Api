@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cronofy.Infrastructure.Queries.ServiceAccount;
 
-using ServiceAccount = Domain.HeartOfTheMatter.ServiceAccounts.ServiceAccount;
+using ServiceAccount = Domain.Entities.ServiceAccounts.ServiceAccount;
 
 public class GetServiceAccountQuery : IGetServiceAccountQuery
 {

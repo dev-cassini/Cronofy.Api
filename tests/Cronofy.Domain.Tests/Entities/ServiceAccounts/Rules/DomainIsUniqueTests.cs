@@ -1,8 +1,8 @@
-using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts.Rules;
+using Cronofy.Domain.Entities.ServiceAccounts.Rules;
 using Cronofy.Domain.Repositories;
 using Moq;
 
-namespace Cronofy.Domain.Tests.HeartOfTheMatter.ServiceAccounts.Rules;
+namespace Cronofy.Domain.Tests.Entities.ServiceAccounts.Rules;
 
 [TestFixture]
 public class DomainIsUniqueTests

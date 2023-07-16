@@ -1,10 +1,10 @@
 using Cronofy.Domain.Common;
 using Cronofy.Domain.Events;
-using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts.Validators;
+using Cronofy.Domain.Entities.ServiceAccounts.Validators;
 using Cronofy.Domain.Repositories;
 using Microsoft.AspNetCore.DataProtection;
 
-namespace Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
+namespace Cronofy.Domain.Entities.ServiceAccounts;
 
 public class ServiceAccount : Entity
 {

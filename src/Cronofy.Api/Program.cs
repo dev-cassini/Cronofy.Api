@@ -1,7 +1,7 @@
 using Cronofy.Api;
 using Cronofy.Application;
 using Cronofy.Domain;
-using Cronofy.Domain.HeartOfTheMatter;
+using Cronofy.Domain.Entities;
 using Cronofy.Infrastructure;
 using Cronofy.Infrastructure.Persistence;
 

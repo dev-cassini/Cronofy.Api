@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Cronofy.Application;
 
-using Application = Domain.HeartOfTheMatter.Application;
+using Application = Domain.Entities.Application;
 
 public static class ServiceCollectionExtensions
 {

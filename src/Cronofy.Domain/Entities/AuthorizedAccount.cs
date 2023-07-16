@@ -1,6 +1,6 @@
-using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
+using Cronofy.Domain.Entities.ServiceAccounts;
 
-namespace Cronofy.Domain.HeartOfTheMatter;
+namespace Cronofy.Domain.Entities;
 
 public class AuthorizedAccount
 {

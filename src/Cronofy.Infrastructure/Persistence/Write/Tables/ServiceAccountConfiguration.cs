@@ -1,4 +1,4 @@
-using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
+using Cronofy.Domain.Entities.ServiceAccounts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -1,9 +1,9 @@
-using Cronofy.Domain.HeartOfTheMatter.ServiceAccounts;
+using Cronofy.Domain.Entities.ServiceAccounts;
 using Cronofy.Domain.Repositories;
 using Microsoft.AspNetCore.DataProtection;
 using Moq;
 
-namespace Cronofy.Domain.Tests.HeartOfTheMatter.ServiceAccounts;
+namespace Cronofy.Domain.Tests.Entities.ServiceAccounts;
 
 public static class ServiceAccountBuilder
 {

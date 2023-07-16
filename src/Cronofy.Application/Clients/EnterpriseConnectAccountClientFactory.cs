@@ -5,7 +5,7 @@ using Microsoft.Extensions.Options;
 
 namespace Cronofy.Application.Clients;
 
-using Application = Domain.HeartOfTheMatter.Application;
+using Application = Domain.Entities.Application;
 
 public class EnterpriseConnectAccountClientFactory : IEnterpriseConnectAccountClientFactory
 {
