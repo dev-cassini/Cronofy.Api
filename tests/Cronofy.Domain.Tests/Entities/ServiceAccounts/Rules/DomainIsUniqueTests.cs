@@ -8,7 +8,7 @@ namespace Cronofy.Domain.Tests.Entities.ServiceAccounts.Rules;
 public class DomainIsUniqueTests
 {
     [Test]
-    public async Task CheckFails_WhenServiceAccountWithDomainAlreadyExists()
+    public async Task CheckFails_When_ServiceAccountWithDomainAlreadyExists()
     {
         // Arrange
         var cancellationToken = new CancellationToken();
@@ -26,7 +26,7 @@ public class DomainIsUniqueTests
     }
 
     [Test]
-    public async Task CheckPasses_WhenServiceAccountWithDomainDoesNotAlreadyExist()
+    public async Task CheckPasses_When_ServiceAccountWithDomainDoesNotAlreadyExist()
     {
         // Arrange
         var cancellationToken = new CancellationToken();

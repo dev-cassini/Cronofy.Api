@@ -7,16 +7,16 @@ namespace Cronofy.Domain.Entities.ServiceAccounts.Validators;
 /// <summary>
 /// Validator to be applied on creation of a <see cref="ServiceAccount"/>.
 /// </summary>
-public class CreateValidator : EntityValidator<ServiceAccount>
+internal class CreateValidator : EntityValidator<ServiceAccount>
 {
     private readonly IServiceAccountRepository _serviceAccountRepository;
 
-    protected override IEnumerable<IRule<ServiceAccount>> Rules => new List<IRule<ServiceAccount>>
+    internal override IEnumerable<IRule<ServiceAccount>> Rules => new List<IRule<ServiceAccount>>
     {
         new DomainIsUnique(_serviceAccountRepository)
     };
 
-    public CreateValidator(IServiceAccountRepository serviceAccountRepository)
+    internal CreateValidator(IServiceAccountRepository serviceAccountRepository)
     {
         _serviceAccountRepository = serviceAccountRepository;
     }
