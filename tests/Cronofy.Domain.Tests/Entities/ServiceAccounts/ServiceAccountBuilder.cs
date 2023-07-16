@@ -5,20 +5,42 @@ using Moq;
 
 namespace Cronofy.Domain.Tests.Entities.ServiceAccounts;
 
-public static class ServiceAccountBuilder
+public class ServiceAccountBuilder
 {
-    public static async Task<ServiceAccount> BuildAsync(CancellationToken cancellationToken = default)
+    private string _domain = Guid.NewGuid().ToString();
+    private string _refreshToken = Guid.NewGuid().ToString();
+    private Mock<IDataProtector> _dataProtector = new();
+    
+    public async Task<ServiceAccount> BuildAsync(CancellationToken cancellationToken = default)
     {
-        const string refreshToken = "test_refresh_token";
-        var dataProtectionProvider = new Mock<IDataProtectionProvider>().Setup(refreshToken);
+        var dataProtectionProvider = new Mock<IDataProtectionProvider>()
+             .Setup(_dataProtector, _refreshToken);
         
         return await ServiceAccount.CreateAsync(
             Guid.NewGuid().ToString(),
-            Guid.NewGuid().ToString(),
+            _domain,
             "test_access_token",
-            refreshToken,
+            _refreshToken,
             dataProtectionProvider.Object,
             Mock.Of<IServiceAccountRepository>(),
             cancellationToken);
+    }
+
+    public ServiceAccountBuilder WithDomain(string domain)
+    {
+        _domain = domain;
+        return this;
+    }
+    
+    public ServiceAccountBuilder WithRefreshToken(string refreshToken)
+    {
+        _refreshToken = refreshToken;
+        return this;
+    }
+
+    public ServiceAccountBuilder WithDataProtector(Mock<IDataProtector> dataProtector)
+    {
+        _dataProtector = dataProtector;
+        return this;
     }
 }

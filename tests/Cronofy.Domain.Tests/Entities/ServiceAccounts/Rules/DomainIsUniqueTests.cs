@@ -12,7 +12,7 @@ public class DomainIsUniqueTests
     {
         // Arrange
         var cancellationToken = new CancellationToken();
-        var serviceAccount = await ServiceAccountBuilder.BuildAsync(cancellationToken);
+        var serviceAccount = await new ServiceAccountBuilder().BuildAsync(cancellationToken);
         var serviceAccountRepository = new Mock<IServiceAccountRepository>();
         serviceAccountRepository.Setup(x => x.AnyAsync(
                 It.Is<string>(y => y == serviceAccount.Domain), 
@@ -30,7 +30,7 @@ public class DomainIsUniqueTests
     {
         // Arrange
         var cancellationToken = new CancellationToken();
-        var serviceAccount = await ServiceAccountBuilder.BuildAsync(cancellationToken);
+        var serviceAccount = await new ServiceAccountBuilder().BuildAsync(cancellationToken);
         var serviceAccountRepository = new Mock<IServiceAccountRepository>();
         serviceAccountRepository.Setup(x => x.AnyAsync(
                 It.Is<string>(y => y == serviceAccount.Domain), 
