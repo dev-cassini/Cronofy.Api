@@ -28,14 +28,26 @@ dotnet user-secrets set "CronofyApplication:ClientId" "CRONOFY_APPLICATION_CLIEN
 dotnet user-secrets set "CronofyApplication:ClientSecret" "CRONOFY_APPLICATION_CLIENT_SECRET"
 ```
 
-Add Postgres connection string to secret storage:
+Add Postgres connection string to secret storage by running the following command from the root of the Cronofy.Api project replacing the value with your Postgres connection string.
+
+Connection string format: Host=localhost;Username=USERNAME_HERE;Password=PASSWORD_HERE;Database=Cronofy.Api;Include Error Detail=true
 
 ```
 dotnet user-secrets set "ConnectionStrings:Postgres" "POSTGRES_CONNECTION_STRING"
 ```
 
-Add RabbitMQ connection string to secret storage:
+Add RabbitMQ connection string to secret storage by running the following command from the root of the Cronofy.Api project replacing the value with your Postgres connection string.
+
+Connection string format: rabbitmq://USERNAME_HERE:PASSWORD_HERE@localhost
 
 ```
 dotnet user-secrets set "ConnectionStrings:RabbitMq" "RABBITMQ_CONNECTION_STRING"
+```
+
+#### Docker ####
+
+Run the following command from the root of the repository to spin up docker containers required to run the app:
+
+```
+docker-compose up -d --build
 ```
