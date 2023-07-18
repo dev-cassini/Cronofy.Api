@@ -11,6 +11,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services
+    .AddEndpointsApiExplorer()
+    .AddSwaggerGen()
+    .AddCustomApiVersioning()
     .AddDomain()
     .AddApplication(builder.Configuration.GetSection(nameof(Application)).Bind)
     .AddInfrastructure(builder.Configuration);

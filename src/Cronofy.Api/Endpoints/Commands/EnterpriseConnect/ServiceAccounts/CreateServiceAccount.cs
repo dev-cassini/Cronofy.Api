@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using Cronofy.Application.Commands.ServiceAccounts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -8,8 +9,10 @@ public static class CreateServiceAccount
 {
     public static void CreateServiceAccountEndpoint(this WebApplication webApplication)
     {
+        var apiVersionSet = webApplication.BuildApiVersionSet();
+        
         webApplication.MapPost(
-            Routes.ServiceAccounts,
+            "/v{version:ApiVersion}/" + Routes.ServiceAccounts,
             async (
                 [FromBody] CreateServiceAccountCommand command, 
                 IMediator mediator, 
@@ -17,6 +20,8 @@ public static class CreateServiceAccount
             {
                 await mediator.Send(command, cancellationToken);
                 return Results.Ok();
-            });
+            })
+            .WithApiVersionSet(apiVersionSet)
+            .HasApiVersion(new ApiVersion(Versions.V1));
     }
 }

@@ -1,3 +1,4 @@
+using Asp.Versioning.ApiExplorer;
 using Cronofy.Domain.Common.Validation;
 using Microsoft.AspNetCore.Diagnostics;
 
@@ -9,8 +10,15 @@ public static class ApplicationBuilderExtensions
     {
         applicationBuilder.UseSwaggerUI(options =>
         {
-            options.SwaggerEndpoint("./swagger/v1/swagger.json", "Cronofy API");
-            options.RoutePrefix = string.Empty;
+            var apiVersionDescriptionProvider = applicationBuilder.ApplicationServices
+                .GetRequiredService<IApiVersionDescriptionProvider>();
+
+            foreach (var apiVersionDescription in apiVersionDescriptionProvider.ApiVersionDescriptions)
+            {
+                options.SwaggerEndpoint(
+                    $"./{apiVersionDescription.GroupName}/swagger.json", 
+                    apiVersionDescription.GroupName.ToUpper());
+            }
         });
     }
 
