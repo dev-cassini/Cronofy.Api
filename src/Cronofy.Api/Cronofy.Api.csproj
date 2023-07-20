@@ -4,10 +4,8 @@
         <TargetFramework>net7.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
-      <UserSecretsId>86d846bf-7852-44a6-9d27-597727c835bc</UserSecretsId>
-      <Configurations>Debug;Release</Configurations>
-      <Platforms>AnyCPU;x64</Platforms>
-  </PropertyGroup>
+        <UserSecretsId>86d846bf-7852-44a6-9d27-597727c835bc</UserSecretsId>
+    </PropertyGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Cronofy.Infrastructure\Cronofy.Infrastructure.csproj" />
