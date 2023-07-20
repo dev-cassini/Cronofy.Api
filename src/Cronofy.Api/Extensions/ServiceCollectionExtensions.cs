@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace Cronofy.Api.Extensions;
 
@@ -19,6 +20,15 @@ public static class ServiceCollectionExtensions
             options.GroupNameFormat = "'v'VVV";
             options.SubstituteApiVersionInUrl = true;
         });
+
+        return serviceCollection;
+    }
+
+    public static IServiceCollection AddCustomAuthentication(this IServiceCollection serviceCollection)
+    {
+        serviceCollection
+            .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer();
 
         return serviceCollection;
     }

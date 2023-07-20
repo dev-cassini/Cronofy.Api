@@ -22,7 +22,7 @@ public static class ApplicationBuilderExtensions
         });
     }
 
-    public static void UseCustomExceptionHandler(this IApplicationBuilder applicationBuilder)
+    public static IApplicationBuilder UseCustomExceptionHandler(this IApplicationBuilder applicationBuilder)
     {
         applicationBuilder.UseExceptionHandler(builder =>
         {
@@ -44,5 +44,7 @@ public static class ApplicationBuilderExtensions
                 }
             });
         });
+
+        return applicationBuilder;
     }
 }

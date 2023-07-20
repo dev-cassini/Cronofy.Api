@@ -1,3 +1,4 @@
+using Cronofy.Api.Authorization;
 using Cronofy.Api.Endpoints;
 using Cronofy.Api.Extensions;
 using Cronofy.Application;
@@ -15,6 +16,8 @@ builder.Services
     .AddEndpointsApiExplorer()
     .AddSwaggerGen()
     .AddCustomApiVersioning()
+    .AddCustomAuthentication()
+    .AddCustomAuthorization()
     .AddDomain()
     .AddApplication(builder.Configuration.GetSection(nameof(Application)).Bind)
     .AddInfrastructure(builder.Configuration);
@@ -28,7 +31,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app
+    .UseAuthentication()
+    .UseAuthorization()
+    .UseCustomExceptionHandler();
+
 app.RegisterEndpoints();
-app.UseCustomExceptionHandler();
 
 app.Run();
