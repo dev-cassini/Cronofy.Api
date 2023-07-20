@@ -1,4 +1,5 @@
 using Cronofy.Api;
+using Cronofy.Api.Extensions;
 using Cronofy.Application;
 using Cronofy.Domain;
 using Cronofy.Domain.Entities;

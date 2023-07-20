@@ -2,7 +2,7 @@ using Asp.Versioning.ApiExplorer;
 using Cronofy.Domain.Common.Validation;
 using Microsoft.AspNetCore.Diagnostics;
 
-namespace Cronofy.Api;
+namespace Cronofy.Api.Extensions;
 
 public static class ApplicationBuilderExtensions
 {

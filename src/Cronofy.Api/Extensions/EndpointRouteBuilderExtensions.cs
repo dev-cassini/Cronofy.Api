@@ -1,7 +1,7 @@
 using Asp.Versioning;
 using Asp.Versioning.Builder;
 
-namespace Cronofy.Api;
+namespace Cronofy.Api.Extensions;
 
 public static class EndpointRouteBuilderExtensions
 {

@@ -1,6 +1,6 @@
 using Asp.Versioning;
 
-namespace Cronofy.Api;
+namespace Cronofy.Api.Extensions;
 
 public static class ServiceCollectionExtensions
 {

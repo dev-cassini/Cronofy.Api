@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Cronofy.Api.Extensions;
 using Cronofy.Application.Commands.ServiceAccounts;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
