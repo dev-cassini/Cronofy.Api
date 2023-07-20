@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Cronofy.Api.Authorization.Constants;
 using Cronofy.Api.Extensions;
 using Cronofy.Application.Commands.ServiceAccounts;
 using MediatR;
@@ -11,18 +12,19 @@ public static class CreateServiceAccount
     public static void CreateServiceAccountEndpoint(this WebApplication webApplication)
     {
         var apiVersionSet = webApplication.BuildApiVersionSet();
-        
+
         webApplication.MapPost(
-            "/v{version:ApiVersion}/" + Routes.ServiceAccounts,
-            async (
-                [FromBody] CreateServiceAccountCommand command, 
-                IMediator mediator, 
-                CancellationToken cancellationToken) =>
-            {
-                await mediator.Send(command, cancellationToken);
-                return Results.Ok();
-            })
+                "/v{version:ApiVersion}/" + Routes.ServiceAccounts,
+                async (
+                    [FromBody] CreateServiceAccountCommand command,
+                    IMediator mediator,
+                    CancellationToken cancellationToken) =>
+                {
+                    await mediator.Send(command, cancellationToken);
+                    return Results.Ok();
+                })
             .WithApiVersionSet(apiVersionSet)
-            .HasApiVersion(new ApiVersion(Versions.V1));
+            .HasApiVersion(new ApiVersion(Versions.V1))
+            .RequireAuthorization(Policies.ServiceAccountWrite);
     }
 }
