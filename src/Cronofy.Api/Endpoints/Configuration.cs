@@ -1,8 +1,8 @@
 using Cronofy.Api.Endpoints.Commands.EnterpriseConnect.ServiceAccounts;
 
-namespace Cronofy.Api;
+namespace Cronofy.Api.Endpoints;
 
-public static class EndpointsConfiguration
+public static class Configuration
 {
     public static void RegisterEndpoints(this WebApplication webApplication)
     {
