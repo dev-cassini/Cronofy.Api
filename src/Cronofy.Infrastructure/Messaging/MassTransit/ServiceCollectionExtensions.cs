@@ -14,10 +14,12 @@ internal static class ServiceCollectionExtensions
     {
         serviceCollection.AddMassTransit(configurator =>
         {
+            configurator.AddDelayedMessageScheduler();
             configurator.UsingRabbitMq((context, factoryConfigurator) =>
             {
                 var rabbitMqConnectionString = configuration.GetConnectionString("RabbitMq")!;
                 factoryConfigurator.Host(rabbitMqConnectionString);
+                factoryConfigurator.UseDelayedMessageScheduler();
                 factoryConfigurator.ConfigureEndpoints(context);
             });
             
