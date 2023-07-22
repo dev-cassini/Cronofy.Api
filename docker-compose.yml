@@ -9,6 +9,37 @@ services:
             - "15672:15672"
         networks:
             - falc-local
+        
+    postgres:
+        container_name: postgres
+        image: postgres
+        ports:
+            - "5432:5432"
+        environment:
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+        networks:
+            - falc-local
+              
+    keycloak:
+        container_name: keycloak
+        image: quay.io/keycloak/keycloak
+        ports:
+            - "8080:8080"
+        environment:
+            DB_VENDOR: postgres
+            DB_ADDR: postgres
+            DB_DATABASE: postgres
+            DB_USER: postgres
+            DB_PASSWORD: password
+            KEYCLOAK_ADMIN: admin
+            KEYCLOAK_ADMIN_PASSWORD: password
+        command:
+            - start-dev
+        networks:
+            - falc-local
+        depends_on:
+            - postgres
 
 networks:
     falc-local:
