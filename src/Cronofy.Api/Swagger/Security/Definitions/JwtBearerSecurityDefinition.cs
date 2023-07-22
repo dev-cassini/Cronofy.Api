@@ -3,18 +3,31 @@ using Microsoft.OpenApi.Models;
 
 namespace Cronofy.Api.Swagger.Security.Definitions;
 
-public static class JwtBearerSecurityDefinition
+public class JwtBearerSecurityDefinition : ISecurityDefinition
 {
-    public static (string Name, OpenApiSecurityScheme OpenApiSecurityScheme) Create()
+    public SecuritySchemeType SecuritySchemeType => SecuritySchemeType.Http;
+    public string Name => JwtBearerDefaults.AuthenticationScheme;
+
+    public OpenApiSecurityScheme OpenApiSecurityScheme => new()
     {
-        return (
-            JwtBearerDefaults.AuthenticationScheme, 
+        Type = SecuritySchemeType.Http,
+        Scheme = JwtBearerDefaults.AuthenticationScheme,
+        BearerFormat = "JWT",
+        Description = "JWT Authorization header using the Bearer scheme."
+    };
+
+    public OpenApiSecurityRequirement OpenApiSecurityRequirement => new()
+    {
+        {
             new OpenApiSecurityScheme
             {
-                Type = SecuritySchemeType.Http,
-                Scheme = JwtBearerDefaults.AuthenticationScheme,
-                BearerFormat = "JWT",
-                Description = "JWT Authorization header using the Bearer scheme. Example: Bearer JWT_TOKEN_HERE"
-            });
-    }
+                Reference = new OpenApiReference
+                {
+                    Id = Name,
+                    Type = ReferenceType.SecurityScheme
+                }
+            },
+            new List<string>()
+        }
+    };
 }

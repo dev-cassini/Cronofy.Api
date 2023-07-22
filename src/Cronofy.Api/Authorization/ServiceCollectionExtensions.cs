@@ -8,7 +8,8 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddCustomAuthorization(this IServiceCollection serviceCollection)
     {
-        serviceCollection.AddAuthorizationBuilder()
+        serviceCollection
+            .AddAuthorizationBuilder()
             .AddServiceAccountWritePolicy();
 
         return serviceCollection;

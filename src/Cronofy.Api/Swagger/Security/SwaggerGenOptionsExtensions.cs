@@ -1,25 +1,34 @@
 using Cronofy.Api.Swagger.Security.Definitions;
+using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Cronofy.Api.Swagger.Security;
 
 public static class SwaggerGenOptionsExtensions
 {
-    public static void AddSecurityDefinitions(this SwaggerGenOptions swaggerGenOptions)
+    public static void AddSecurityDefinitions(
+        this SwaggerGenOptions swaggerGenOptions,
+        List<SecuritySchemeType> securitySchemeTypes)
     {
-        swaggerGenOptions.AddJwtBearerSecurityDefinition();
-        swaggerGenOptions.AddOAuth2AuthenticationCodeSecurityDefinition();
+        var securityDefinitionFactory = new SecurityDefinitionFactory();
+        foreach (var securitySchemeType in securitySchemeTypes)
+        {
+            var securityDefinition = securityDefinitionFactory.Create(securitySchemeType);
+            swaggerGenOptions.AddSecurityDefinition(
+                securityDefinition.Name,
+                securityDefinition.OpenApiSecurityScheme);
+        }
     }
-
-    private static void AddJwtBearerSecurityDefinition(this SwaggerGenOptions swaggerGenOptions)
+    
+    public static void AddSecurityRequirements(
+        this SwaggerGenOptions swaggerGenOptions,
+        List<SecuritySchemeType> securitySchemeTypes)
     {
-        var (securityDefinitionName, openApiSecurityScheme) = JwtBearerSecurityDefinition.Create();
-        swaggerGenOptions.AddSecurityDefinition(securityDefinitionName, openApiSecurityScheme);
-    }
-
-    private static void AddOAuth2AuthenticationCodeSecurityDefinition(this SwaggerGenOptions swaggerGenOptions)
-    {
-        var (securityDefinitionName, openApiSecurityScheme) = OAuth2AuthenticationCodeSecurityDefinition.Create();
-        swaggerGenOptions.AddSecurityDefinition(securityDefinitionName, openApiSecurityScheme);
+        var securityDefinitionFactory = new SecurityDefinitionFactory();
+        foreach (var securitySchemeType in securitySchemeTypes)
+        {
+            var securityDefinition = securityDefinitionFactory.Create(securitySchemeType);
+            swaggerGenOptions.AddSecurityRequirement(securityDefinition.OpenApiSecurityRequirement);
+        }
     }
 }

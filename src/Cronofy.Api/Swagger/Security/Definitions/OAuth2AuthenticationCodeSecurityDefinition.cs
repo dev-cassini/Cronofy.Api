@@ -1,25 +1,42 @@
+using Cronofy.Api.Authorization.Constants;
 using Microsoft.OpenApi.Models;
 
 namespace Cronofy.Api.Swagger.Security.Definitions;
 
-public static class OAuth2AuthenticationCodeSecurityDefinition
+public class OAuth2AuthenticationCodeSecurityDefinition : ISecurityDefinition
 {
-    public static (string Name, OpenApiSecurityScheme OpenApiSecurityScheme) Create()
+    public SecuritySchemeType SecuritySchemeType => SecuritySchemeType.OAuth2;
+    public string Name => "OAuth2 Authentication Code";
+
+    public OpenApiSecurityScheme OpenApiSecurityScheme => new()
     {
-        return (
-            "OAuth2 Authentication Code",
+        Type = SecuritySchemeType.OAuth2,
+        Flows = new OpenApiOAuthFlows
+        {
+            AuthorizationCode = new OpenApiOAuthFlow
+            {
+                AuthorizationUrl = new Uri("TODO"),
+                TokenUrl = new Uri("TODO"),
+                Scopes = new Dictionary<string, string>
+                {
+                    { Scopes.ServiceAccountWrite, "Write access to Service Accounts." }
+                }
+            }
+        }
+    };
+    
+    public OpenApiSecurityRequirement OpenApiSecurityRequirement => new()
+    {
+        {
             new OpenApiSecurityScheme
             {
-                Type = SecuritySchemeType.OAuth2,
-                Flows = new OpenApiOAuthFlows
+                Reference = new OpenApiReference
                 {
-                    AuthorizationCode = new OpenApiOAuthFlow
-                    {
-                        AuthorizationUrl = new Uri(""),
-                        TokenUrl = new Uri(""),
-                        Scopes = new Dictionary<string, string>()
-                    }
+                    Id = Name,
+                    Type = ReferenceType.SecurityScheme
                 }
-            });
-    }
+            },
+            new List<string>()
+        }
+    };
 }
