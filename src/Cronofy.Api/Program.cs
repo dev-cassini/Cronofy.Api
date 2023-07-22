@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddEndpointsApiExplorer()
-    .AddCustomerSwaggerGen()
+    .AddCustomSwaggerGen()
     .AddCustomApiVersioning()
     .AddCustomAuthentication()
     .AddCustomAuthorization()
