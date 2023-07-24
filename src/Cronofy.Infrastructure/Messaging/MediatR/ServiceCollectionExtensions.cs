@@ -6,12 +6,14 @@ namespace Cronofy.Infrastructure.Messaging.MediatR;
 
 internal static class ServiceCollectionExtensions
 {
-    internal static void AddMediatR(this IServiceCollection serviceCollection)
+    internal static IServiceCollection AddMediatR(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddMediatR(configuration =>
         {
             configuration.RegisterServicesFromAssemblyContaining<ApplicationMarker>();
             configuration.AddOpenBehavior(typeof(TransactionPipelineBehaviour<,>));
         });
+        
+        return serviceCollection;
     }
 }

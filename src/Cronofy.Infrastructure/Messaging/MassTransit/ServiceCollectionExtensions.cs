@@ -7,7 +7,7 @@ namespace Cronofy.Infrastructure.Messaging.MassTransit;
 
 internal static class ServiceCollectionExtensions
 {
-    internal static void AddMassTransit<TDbContext>(
+    internal static IServiceCollection AddMassTransit<TDbContext>(
         this IServiceCollection serviceCollection,
         IConfiguration configuration)
         where TDbContext : DbContext
@@ -29,6 +29,8 @@ internal static class ServiceCollectionExtensions
                 outboxConfigurator.UseBusOutbox();
             });
         });
+        
+        return serviceCollection;
     }
 
     internal static void ConfigureMassTransitEntityFrameworkOutbox(this ModelBuilder modelBuilder)

@@ -3,16 +3,18 @@ using Cronofy.Infrastructure.Messaging.MassTransit;
 using Cronofy.Infrastructure.Messaging.MediatR;
 using Cronofy.Infrastructure.Persistence.Write.Tables;
 using MediatR;
+using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Cronofy.Infrastructure.Persistence.Write;
 
-public class CronofyWriteDbContext : DbContext
+public class CronofyWriteDbContext : DbContext, IDataProtectionKeyContext
 {
     private readonly IMediator _mediator;
     
     public DbSet<ServiceAccount> ServiceAccounts { get; set; } = null!;
     public DbSet<ServiceAccount> AuthorizedAccounts { get; set; } = null!;
+    public DbSet<DataProtectionKey> DataProtectionKeys { get; set; } = null!;
 
     public CronofyWriteDbContext(
         DbContextOptions<CronofyWriteDbContext> options,

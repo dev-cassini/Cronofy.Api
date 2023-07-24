@@ -6,8 +6,10 @@ namespace Cronofy.Infrastructure.Queries;
 
 internal static class ServiceCollectionExtensions
 {
-    internal static void AddQueries(this IServiceCollection serviceCollection)
+    internal static IServiceCollection AddQueries(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IGetServiceAccountQuery, GetServiceAccountQuery>();
+        
+        return serviceCollection;
     }
 }

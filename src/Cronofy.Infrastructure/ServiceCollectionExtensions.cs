@@ -1,3 +1,4 @@
+using Cronofy.Infrastructure.DataProtection;
 using Cronofy.Infrastructure.Messaging.MassTransit;
 using Cronofy.Infrastructure.Messaging.MediatR;
 using Cronofy.Infrastructure.Persistence;
@@ -14,10 +15,12 @@ public static class ServiceCollectionExtensions
         this IServiceCollection serviceCollection, 
         IConfiguration configuration)
     {
-        serviceCollection.AddPersistence(configuration);
-        serviceCollection.AddRepositories();
-        serviceCollection.AddQueries();
-        serviceCollection.AddMediatR();
-        serviceCollection.AddMassTransit<CronofyWriteDbContext>(configuration);
+        serviceCollection
+            .AddPersistence(configuration)
+            .AddRepositories()
+            .AddQueries()
+            .AddMediatR()
+            .AddMassTransit<CronofyWriteDbContext>(configuration)
+            .AddCustomDataProtection();
     }
 }

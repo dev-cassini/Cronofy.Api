@@ -3,7 +3,6 @@ using Cronofy.Api.Endpoints;
 using Cronofy.Api.Extensions;
 using Cronofy.Api.Swagger;
 using Cronofy.Application;
-using Cronofy.Domain;
 using Cronofy.Domain.Entities;
 using Cronofy.Infrastructure;
 using Cronofy.Infrastructure.Persistence;
@@ -19,7 +18,6 @@ builder.Services
     .AddCustomApiVersioning()
     .AddCustomAuthentication()
     .AddCustomAuthorization()
-    .AddDomain()
     .AddApplication(builder.Configuration.GetSection(nameof(Application)).Bind)
     .AddInfrastructure(builder.Configuration);
 

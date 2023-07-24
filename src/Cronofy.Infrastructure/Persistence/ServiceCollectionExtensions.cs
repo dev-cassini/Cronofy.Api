@@ -10,14 +10,18 @@ namespace Cronofy.Infrastructure.Persistence;
 
 internal static class ServiceCollectionExtensions
 {
-    internal static void AddPersistence(this IServiceCollection serviceCollection, IConfiguration configuration)
+    internal static IServiceCollection AddPersistence(this IServiceCollection serviceCollection, IConfiguration configuration)
     {
         serviceCollection.AddPostgresDatabase<CronofyReadDbContext>(configuration);
         serviceCollection.AddPostgresDatabase<CronofyWriteDbContext>(configuration);
+
+        return serviceCollection;
     }
 
-    internal static void AddRepositories(this IServiceCollection serviceCollection)
+    internal static IServiceCollection AddRepositories(this IServiceCollection serviceCollection)
     {
         serviceCollection.AddScoped<IServiceAccountRepository, ServiceAccountRepository>();
+        
+        return serviceCollection;
     }
 }
