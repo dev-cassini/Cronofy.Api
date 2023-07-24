@@ -6,6 +6,7 @@ public static class Configuration
 {
     public static void RegisterEndpoints(this WebApplication webApplication)
     {
-        webApplication.CreateServiceAccountEndpoint();
+        webApplication
+            .AuthorizeServiceAccountEndpoint();
     }
 }
