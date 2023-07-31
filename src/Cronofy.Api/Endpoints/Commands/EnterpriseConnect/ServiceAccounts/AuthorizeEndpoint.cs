@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using Cronofy.Api.Authorization.Policies.ServiceAccounts;
 using Cronofy.Api.Extensions;
 using Cronofy.Application.Commands.ServiceAccounts;
 using Cronofy.Domain.Entities.ServiceAccounts;
@@ -17,7 +18,7 @@ public static class AuthorizeEndpoint
                 AuthorizeServiceAccount)
             .WithApiVersionSet(apiVersionSet)
             .HasApiVersion(new ApiVersion(Versions.V1))
-            .AllowAnonymous()
+            .RequireAuthorization(AuthorizeServiceAccountPolicy.Name)
             .WithTags(nameof(ServiceAccount))
             .Produces(StatusCodes.Status401Unauthorized)
             .Produces(StatusCodes.Status403Forbidden)

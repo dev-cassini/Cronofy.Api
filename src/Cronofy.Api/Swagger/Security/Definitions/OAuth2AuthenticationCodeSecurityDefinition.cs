@@ -1,4 +1,4 @@
-using Cronofy.Api.Authorization.Constants;
+using Cronofy.Api.Authorization.Scopes;
 using Microsoft.OpenApi.Models;
 
 namespace Cronofy.Api.Swagger.Security.Definitions;
@@ -19,7 +19,7 @@ public class OAuth2AuthenticationCodeSecurityDefinition : ISecurityDefinition
                 TokenUrl = new Uri("TODO"),
                 Scopes = new Dictionary<string, string>
                 {
-                    { Scopes.ServiceAccountWrite, "Write access to Service Accounts." }
+                    { Scopes.ServiceAccount.Write, "Write access to Service Accounts." }
                 }
             }
         }

@@ -1,5 +1,4 @@
-using Cronofy.Api.Authorization.Constants;
-using IdentityModel;
+using Cronofy.Api.Authorization.Policies.ServiceAccounts;
 using Microsoft.AspNetCore.Authorization;
 
 namespace Cronofy.Api.Authorization;
@@ -10,15 +9,13 @@ public static class ServiceCollectionExtensions
     {
         serviceCollection
             .AddAuthorizationBuilder()
-            .AddServiceAccountWritePolicy();
+            .AddServiceAccountPolicies();
 
         return serviceCollection;
     }
 
-    private static AuthorizationBuilder AddServiceAccountWritePolicy(this AuthorizationBuilder authorizationBuilder)
+    private static AuthorizationBuilder AddServiceAccountPolicies(this AuthorizationBuilder authorizationBuilder)
     {
-        return authorizationBuilder.AddPolicy(
-            Policies.ServiceAccountWrite,
-            policy => policy.RequireClaim(JwtClaimTypes.Scope, Scopes.ServiceAccountWrite));
+        return authorizationBuilder.AddPolicy(AuthorizeServiceAccountPolicy.Name, AuthorizeServiceAccountPolicy.AuthorizationPolicy);
     }
 }

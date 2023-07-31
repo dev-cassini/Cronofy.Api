@@ -38,3 +38,5 @@ app
 app.RegisterEndpoints();
 
 app.Run();
+
+public partial class Program { }
