@@ -1,4 +1,4 @@
-using Cronofy.Domain.Enums;
+using Cronofy.Domain.Entities.Applications.Validators;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
@@ -12,7 +12,12 @@ internal static class ServiceCollectionExtensions
         this IServiceCollection serviceCollection,
         Action<Application> configureApplication)
     {
-        serviceCollection.Configure(configureApplication);
+        serviceCollection.AddSingleton<IValidateOptions<Application>, ApplicationValidator>();
+        serviceCollection
+            .AddOptions<Application>()
+            .Configure(configureApplication)
+            .ValidateOnStart();
+        
         serviceCollection.AddScoped<ICronofyOAuthClient, CronofyOAuthClient>(provider =>
         {
             var application = provider.GetRequiredService<IOptions<Application>>().Value;
@@ -20,7 +25,7 @@ internal static class ServiceCollectionExtensions
             return new CronofyOAuthClient(
                 application.ClientId,
                 application.ClientSecret,
-                application.DataCenter.ToSdkIdentifier());
+                application.SdkIdentifier);
         });
 
         serviceCollection.AddScoped<IEnterpriseConnectAccountClientFactory, EnterpriseConnectAccountClientFactory>();

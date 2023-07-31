@@ -1,6 +1,5 @@
 using System.Net.Mail;
 using Cronofy.Application.Queries.ServiceAccount;
-using Cronofy.Domain.Enums;
 using Microsoft.Extensions.Options;
 
 namespace Cronofy.Application.Clients;
@@ -9,14 +8,14 @@ using Application = Domain.Entities.Applications.Application;
 
 public class EnterpriseConnectAccountClientFactory : IEnterpriseConnectAccountClientFactory
 {
-    private readonly DataCenter _dataCenter;
+    private readonly Application _applicationConfiguration;
     private readonly IGetServiceAccountQuery _getServiceAccountQuery;
 
     public EnterpriseConnectAccountClientFactory(
         IGetServiceAccountQuery getServiceAccountQuery,
         IOptions<Application> applicationConfiguration)
     {
-        _dataCenter = applicationConfiguration.Value.DataCenter;
+        _applicationConfiguration = applicationConfiguration.Value;
         _getServiceAccountQuery = getServiceAccountQuery;
     }
 
@@ -29,6 +28,6 @@ public class EnterpriseConnectAccountClientFactory : IEnterpriseConnectAccountCl
             throw new ArgumentException("Domain {domain} is not associated with a service account.", domain);
         }
 
-        return new CronofyEnterpriseConnectAccountClient(serviceAccount.AccessToken, _dataCenter.ToSdkIdentifier());
+        return new CronofyEnterpriseConnectAccountClient(serviceAccount.AccessToken, _applicationConfiguration.SdkIdentifier);
     }
 }

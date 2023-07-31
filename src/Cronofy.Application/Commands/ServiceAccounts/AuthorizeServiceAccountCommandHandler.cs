@@ -1,5 +1,4 @@
 using Cronofy.Domain.Entities.ServiceAccounts;
-using Cronofy.Domain.Enums;
 using Cronofy.Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.DataProtection;
@@ -30,7 +29,7 @@ public class AuthorizeServiceAccountCommandHandler : IRequestHandler<AuthorizeSe
         var cronofyOAuthClient = new CronofyOAuthClient(
             _applicationConfiguration.ClientId,
             _applicationConfiguration.ClientSecret,
-            _applicationConfiguration.DataCenter.ToSdkIdentifier());
+            _applicationConfiguration.SdkIdentifier);
 
         var oauthToken = cronofyOAuthClient.GetTokenFromCode(request.Code, "https://auth0react.vercel.app/cronofy");
         var serviceAccount = await ServiceAccount.CreateAsync(
