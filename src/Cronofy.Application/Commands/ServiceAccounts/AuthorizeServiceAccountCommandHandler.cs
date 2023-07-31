@@ -31,7 +31,7 @@ public class AuthorizeServiceAccountCommandHandler : IRequestHandler<AuthorizeSe
             _applicationConfiguration.ClientSecret,
             _applicationConfiguration.SdkIdentifier);
 
-        var oauthToken = cronofyOAuthClient.GetTokenFromCode(request.Code, "https://auth0react.vercel.app/cronofy");
+        var oauthToken = cronofyOAuthClient.GetTokenFromCode(request.Code, _applicationConfiguration.ServiceAccountAuthorizationRedirectUri);
         var serviceAccount = await ServiceAccount.CreateAsync(
             oauthToken.Sub, 
             Guid.NewGuid().ToString(), 

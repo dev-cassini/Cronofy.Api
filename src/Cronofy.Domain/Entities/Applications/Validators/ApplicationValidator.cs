@@ -26,6 +26,12 @@ public class ApplicationValidator : IValidateOptions<Application>
         {
             return ValidateOptionsResult.Fail($"{nameof(Application)}.{nameof(Application.ClientSecret)} value is an empty string. Check environment variables are configured correctly.");
         }
+
+        if ((Uri.TryCreate(options.ServiceAccountAuthorizationRedirectUri, UriKind.Absolute, out var uri) && 
+             (uri.Scheme == Uri.UriSchemeHttp || uri.Scheme == Uri.UriSchemeHttps)) is false)
+        {
+            return ValidateOptionsResult.Fail($"{nameof(Application)}.{nameof(Application.ServiceAccountAuthorizationRedirectUri)} value is not a valid URI. Check environment variables are configured correctly.");
+        }
         
         return ValidateOptionsResult.Success;
     }
