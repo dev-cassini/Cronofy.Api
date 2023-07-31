@@ -7,7 +7,7 @@ using Microsoft.Extensions.Options;
 
 namespace Cronofy.Application.Commands.ServiceAccounts;
 
-using Application = Domain.Entities.Application;
+using Application = Domain.Entities.Applications.Application;
 
 public class AuthorizeServiceAccountCommandHandler : IRequestHandler<AuthorizeServiceAccountCommand, Unit>
 {

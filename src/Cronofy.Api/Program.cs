@@ -3,7 +3,7 @@ using Cronofy.Api.Endpoints;
 using Cronofy.Api.Extensions;
 using Cronofy.Api.Swagger;
 using Cronofy.Application;
-using Cronofy.Domain.Entities;
+using Cronofy.Domain.Entities.Applications;
 using Cronofy.Infrastructure;
 using Cronofy.Infrastructure.Persistence;
 

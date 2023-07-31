@@ -1,6 +1,6 @@
 using Cronofy.Domain.Enums;
 
-namespace Cronofy.Domain.Entities;
+namespace Cronofy.Domain.Entities.Applications;
 
 public sealed class Application
 {
