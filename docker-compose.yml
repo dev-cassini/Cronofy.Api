@@ -12,12 +12,16 @@ services:
         
     postgres:
         container_name: postgres
-        image: postgres
+        image: postgres:latest
         ports:
             - "5432:5432"
         environment:
             POSTGRES_USER: postgres
             POSTGRES_PASSWORD: password
+            PGDATA: /var/lib/postgresql/data/pgdata
+        hostname: postgres
+        volumes:
+            - ./postgres-data/:/var/lib/postgresql
         networks:
             - falc-local
               
@@ -41,6 +45,21 @@ services:
         depends_on:
             - postgres
 
+    ngrok:
+        container_name: ngrok
+        image: ngrok/ngrok
+        ports:
+            - "4040:4040"
+        command:
+            - "start"
+            - "cronofy.api"
+            - "--config"
+            - "/etc/ngrok.yml"
+        volumes:
+            - ./ngrok.yml:/etc/ngrok.yml
+        networks: 
+            - falc-local
+
 networks:
     falc-local:
-        driver: bridge
+        external: true
