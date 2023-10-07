@@ -1,5 +1,5 @@
-using Cronofy.Application.Queries.ServiceAccount;
-using Cronofy.Infrastructure.Queries.ServiceAccount;
+using Cronofy.Application.Queries.ServiceAccounts;
+using Cronofy.Infrastructure.Queries.ServiceAccounts;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cronofy.Infrastructure.Queries;

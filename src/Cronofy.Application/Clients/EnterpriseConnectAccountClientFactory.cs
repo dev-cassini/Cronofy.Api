@@ -1,5 +1,5 @@
 using System.Net.Mail;
-using Cronofy.Application.Queries.ServiceAccount;
+using Cronofy.Application.Queries.ServiceAccounts;
 using Microsoft.Extensions.Options;
 
 namespace Cronofy.Application.Clients;

@@ -1,9 +1,9 @@
-using Cronofy.Application.Queries.ServiceAccount;
+using Cronofy.Application.Queries.ServiceAccounts;
 using Cronofy.Infrastructure.Persistence.Read;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cronofy.Infrastructure.Queries.ServiceAccount;
+namespace Cronofy.Infrastructure.Queries.ServiceAccounts;
 
 using ServiceAccount = Domain.Entities.ServiceAccounts.ServiceAccount;
 

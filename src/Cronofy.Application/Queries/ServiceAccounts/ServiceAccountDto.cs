@@ -1,4 +1,4 @@
-namespace Cronofy.Application.Queries.ServiceAccount;
+namespace Cronofy.Application.Queries.ServiceAccounts;
 
 public record ServiceAccountDto(
     string Id,
